@@ -1,9 +1,9 @@
-if IY_LOADED and not _G.IY_DEBUG then
-	-- error("Infinite Yield is already running!", 0)
+if TCSGui_LOADED and not _G.TCSGui_DEBUG then
+	-- error("TCS Gui is already running!", 0)
 	return
 end
 
-pcall(function() getgenv().IY_LOADED = true end)
+pcall(function() getgenv().TCSGui_LOADED = true end)
 if not game:IsLoaded() then game.Loaded:Wait() end
 
 function missing(t, f, fallback)
@@ -92,7 +92,7 @@ SocialService = Services.SocialService
 
 PlayerGui = cloneref(Players.LocalPlayer:FindFirstChildWhichIsA("PlayerGui"))
 COREGUI = Services.CoreGui or PlayerGui
-IYMouse = cloneref(Players.LocalPlayer:GetMouse())
+TCSGuiMouse = cloneref(Players.LocalPlayer:GetMouse())
 PlaceId, JobId = game.PlaceId, game.JobId
 xpcall(function()
 	IsOnMobile = table.find({Enum.Platform.Android, Enum.Platform.IOS}, UserInputService:GetPlatform())
@@ -105,7 +105,7 @@ isLegacyChat = TextChatService.ChatVersion == Enum.ChatVersion.LegacyChatService
 end)) or false]]
 
 -- xylex & europa
-local iyassets = {
+local TCSGuiassets = {
 	["infiniteyield/assets/bindsandplugins.png"] = "rbxassetid://5147695474",
 	["infiniteyield/assets/close.png"] = "rbxassetid://5054663650",
 	["infiniteyield/assets/editaliases.png"] = "rbxassetid://5147488658",
@@ -129,7 +129,7 @@ local function getcustomasset(asset)
 			return result
 		end
 	end
-	return iyassets[asset]
+	return TCSGuiassets[asset]
 end
 
 if makefolder and isfolder and writefile and isfile then
@@ -140,7 +140,7 @@ if makefolder and isfolder and writefile and isfile then
 				makefolder(folder)
 			end
 		end
-		for path in iyassets do
+		for path in TCSGuiassets do
 			if not isfile(path) then
 				writefile(path, game:HttpGet((path:gsub("infiniteyield/", assets))))
 			end
@@ -354,7 +354,7 @@ Title.BorderSizePixel = 0
 Title.Size = UDim2.new(0, 250, 0, 20)
 Title.Font = Enum.Font.SourceSans
 Title.TextSize = 18
-Title.Text = "TCS IY FE v" .. currentVersion
+Title.Text = "TCS TCSGui FE v" .. currentVersion
 
 do
 	local emoji = ({
@@ -1521,7 +1521,7 @@ About.Position = UDim2.new(0, 17, 0, 10)
 About.Size = UDim2.new(0, 187, 0, 49)
 About.Font = Enum.Font.SourceSans
 About.TextSize = 14
-About.Text = "Plugins are .iy files and should be located in the 'workspace' folder of your exploit."
+About.Text = "Plugins are .TCSGui files and should be located in the 'workspace' folder of your exploit."
 About.TextColor3 = Color3.fromRGB(255, 255, 255)
 About.TextWrapped = true
 About.TextYAlignment = Enum.TextYAlignment.Top
@@ -1602,7 +1602,7 @@ PluginsHint.Position = UDim2.new(0, 25, 0, 40)
 PluginsHint.Size = UDim2.new(0, 200, 0, 50)
 PluginsHint.Font = Enum.Font.SourceSansItalic
 PluginsHint.TextSize = 16
-PluginsHint.Text = "Download plugins from the IY Discord (discord.gg/78ZuWSq)"
+PluginsHint.Text = "Download plugins from the TCSGui Discord (discord.gg/78ZuWSq)"
 PluginsHint.TextColor3 = Color3.new(1, 1, 1)
 PluginsHint.TextStrokeColor3 = Color3.new(1, 1, 1)
 PluginsHint.TextWrapped = true
@@ -2876,7 +2876,7 @@ reference = (function()
 		{111,"TextLabel",{BackgroundColor3=Color3.new(1,1,1),BackgroundTransparency=1,Font=3,Name="Text",Parent={105},Position=UDim2.new(0,8,0,148),Size=UDim2.new(1,-8,0,16),Text="Setting up 'goto $1' on the OnChatted event will teleport you to any player that chats.",TextColor3=Color3.new(1,1,1),TextSize=14,TextWrapped=true,TextXAlignment=0,TextYAlignment=0,ZIndex=10,}},
 		{112,"Frame",{BackgroundColor3=Color3.new(1,1,1),BackgroundTransparency=1,Name="Section",Parent={7},Size=UDim2.new(1,0,0,105),ZIndex=10,}},
 		{113,"TextLabel",{BackgroundColor3=Color3.new(1,1,1),BackgroundTransparency=1,Font=4,Name="Header",Parent={112},Position=UDim2.new(0,8,0,5),Size=UDim2.new(1,-8,0,20),Text="Get Further Help",TextColor3=Color3.new(1,1,1),TextSize=20,TextXAlignment=0,ZIndex=10,}},
-		{114,"TextLabel",{BackgroundColor3=Color3.new(1,1,1),BackgroundTransparency=1,Font=3,Name="Text",Parent={112},Position=UDim2.new(0,8,0,30),Size=UDim2.new(1,-8,0,32),Text="You can join the Discord server to get support with IY,  and read up on more documentation such as the Plugin API.",TextColor3=Color3.new(1,1,1),TextSize=14,TextWrapped=true,TextXAlignment=0,ZIndex=10,}},
+		{114,"TextLabel",{BackgroundColor3=Color3.new(1,1,1),BackgroundTransparency=1,Font=3,Name="Text",Parent={112},Position=UDim2.new(0,8,0,30),Size=UDim2.new(1,-8,0,32),Text="You can join the Discord server to get support with TCSGui,  and read up on more documentation such as the Plugin API.",TextColor3=Color3.new(1,1,1),TextSize=14,TextWrapped=true,TextXAlignment=0,ZIndex=10,}},
 		{115,"Frame",{BackgroundColor3=Color3.new(0.1803921610117,0.1803921610117,0.1843137294054),BorderSizePixel=0,Name="Line",Parent={112},Position=UDim2.new(0,10,1,-1),Size=UDim2.new(1,-20,0,1),Visible=false,ZIndex=10,}},
 		{116,"TextButton",{BackgroundColor3=Color3.new(0.48627451062202,0.61960786581039,0.85098040103912),BorderColor3=Color3.new(0.1803921610117,0.1803921610117,0.1843137294054),Font=4,Name="InviteButton",Parent={112},Position=UDim2.new(0,5,0,75),Size=UDim2.new(1,-10,0,25),Text="Copy Discord Invite Link (https://discord.gg/78ZuWSq)",TextColor3=Color3.new(0.1803921610117,0.1803921610117,0.1843137294054),TextSize=16,ZIndex=10,}},
 	})
@@ -2928,7 +2928,7 @@ defaultsettings = {
 	StayOpen = false;
 	guiScale = defaultGuiScale;
 	espTransparency = 0.3;
-	keepIY = true;
+	keepTCSGui = true;
 	logsEnabled = false;
 	jLogsEnabled = false;
 	aliases = {};
@@ -3049,7 +3049,7 @@ local loadedEventData = nil
 local jsonAttempts = 0
 function saves()
 	if writefileExploit() and readfileExploit() and jsonAttempts < 10 then
-		local readSuccess, out = readfile("IY_FE.iy", true)
+		local readSuccess, out = readfile("TCSGui_FE.TCSGui", true)
 		if readSuccess then
 			if out ~= nil and tostring(out):gsub("%s", "") ~= "" then
 				local success, response = pcall(function()
@@ -3057,7 +3057,7 @@ function saves()
 					if vtype(json.prefix, "string") then prefix = json.prefix else prefix = ';' end
 					if vtype(json.StayOpen, "boolean") then StayOpen = json.StayOpen else StayOpen = false end
 					if vtype(json.guiScale, "number") then guiScale = json.guiScale else guiScale = defaultGuiScale end
-					if vtype(json.keepIY, "boolean") then KeepInfYield = json.keepIY else KeepInfYield = true end
+					if vtype(json.keepTCSGui, "boolean") then KeepInfYield = json.keepTCSGui else KeepInfYield = true end
 					if vtype(json.espTransparency, "number") then espTransparency = json.espTransparency else espTransparency = 0.3 end
 					if vtype(json.logsEnabled, "boolean") then logsEnabled = json.logsEnabled else logsEnabled = false end
 					if vtype(json.jLogsEnabled, "boolean") then jLogsEnabled = json.jLogsEnabled else jLogsEnabled = false end
@@ -3079,14 +3079,14 @@ function saves()
 					jsonAttempts = jsonAttempts + 1
 					warn("Save Json Error:", response)
 					warn("Overwriting Save File")
-					writefile("IY_FE.iy", defaults, true)
+					writefile("TCSGui_FE.TCSGui", defaults, true)
 					wait()
 					saves()
 				end
 			else
-				writefile("IY_FE.iy", defaults, true)
+				writefile("TCSGui_FE.TCSGui", defaults, true)
 				wait()
-				local dReadSuccess, dOut = readfile("IY_FE.iy", true)
+				local dReadSuccess, dOut = readfile("TCSGui_FE.TCSGui", true)
 				if dReadSuccess and dOut ~= nil and tostring(dOut):gsub("%s", "") ~= "" then
 					saves()
 				else
@@ -3096,9 +3096,9 @@ function saves()
 				end
 			end
 		else
-			writefile("IY_FE.iy", defaults, true)
+			writefile("TCSGui_FE.TCSGui", defaults, true)
 			wait()
-			local dReadSuccess, dOut = readfile("IY_FE.iy", true)
+			local dReadSuccess, dOut = readfile("TCSGui_FE.TCSGui", true)
 			if dReadSuccess and dOut ~= nil and tostring(dOut):gsub("%s", "") ~= "" then
 				saves()
 			else
@@ -3111,7 +3111,7 @@ function saves()
 		if jsonAttempts >= 10 then
 			nosaves = true
 			useFactorySettings()
-			createPopup("File Error", "Sorry, we have attempted to parse your save file, but it is unreadable!\n\nInfinite Yield is now using factory settings until your exploit's file system works.\n\nYour save file has not been deleted.")
+			createPopup("File Error", "Sorry, we have attempted to parse your save file, but it is unreadable!\n\nTCS Gui is now using factory settings until your exploit's file system works.\n\nYour save file has not been deleted.")
 		else
 			nosaves = true
 			useFactorySettings()
@@ -3127,7 +3127,7 @@ function updatesaves()
 			prefix = prefix;
 			StayOpen = StayOpen;
 			guiScale = guiScale;
-			keepIY = KeepInfYield;
+			keepTCSGui = KeepInfYield;
 			espTransparency = espTransparency;
 			logsEnabled = logsEnabled;
 			jLogsEnabled = jLogsEnabled;
@@ -3144,7 +3144,7 @@ function updatesaves()
 			currentScroll = {currentScroll.R,currentScroll.G,currentScroll.B};
 			eventBinds = eventEditor.SaveData()
 		}
-		writefileCooldown("IY_FE.iy", HttpService:JSONEncode(update))
+		writefileCooldown("TCSGui_FE.TCSGui", HttpService:JSONEncode(update))
 	end
 end
 
@@ -3165,7 +3165,7 @@ if type(binds) ~= "table" then binds = {} end
 
 if type(PluginsTable) == "table" then
 	for i = #PluginsTable, 1, -1 do
-		if string.sub(PluginsTable[i], -3) ~= ".iy" then
+		if string.sub(PluginsTable[i], -3) ~= ".TCSGui" then
 			table.remove(PluginsTable, i)
 		end
 	end
@@ -3379,7 +3379,7 @@ function CreateJoinLabel(plr,ID)
 	info2.Text = string.gsub(info2.Text, "Loading...",splitDates[2].."/"..splitDates[3].."/"..splitDates[1])
 end
 
-IYMouse.KeyDown:Connect(function(Key)
+TCSGuiMouse.KeyDown:Connect(function(Key)
 	if (Key==prefix) then
 		RunService.RenderStepped:Wait()
 		Cmdbar:CaptureFocus()
@@ -3491,7 +3491,7 @@ ColorsButton.MouseButton1Click:Connect(function()
 				local greenInput = pickerFrame.Green.Input
 				local blueInput = pickerFrame.Blue.Input
 
-				local mouse = IYMouse
+				local mouse = TCSGuiMouse
 
 				local hue,sat,val = 0,0,1
 				local red,green,blue = 1,1,1
@@ -4012,7 +4012,7 @@ SaveChatlogs.MouseButton1Down:Connect(function()
 		if #scroll_2:GetChildren() > 0 then
 			notify("Loading",'Hold on a sec')
 			local placeName = CleanFileName(MarketplaceService:GetProductInfo(PlaceId).Name)
-			local writelogs = '-- Infinite Yield Chat logs for "'..placeName..'"\n'
+			local writelogs = '-- TCS Gui Chat logs for "'..placeName..'"\n'
 			for _, child in pairs(scroll_2:GetChildren()) do
 				writelogs = writelogs..'\n'..child.Text
 			end
@@ -4145,20 +4145,20 @@ local ClickSelect = nil
 function selectPart()
 	ToPartFrame:TweenPosition(UDim2.new(0.5, -180, 0, 335), "InOut", "Quart", 0.5, true, nil)
 	local function HighlightPart()
-		if selected.Adornee ~= IYMouse.Target then
-			selectionBox.Adornee = IYMouse.Target
+		if selected.Adornee ~= TCSGuiMouse.Target then
+			selectionBox.Adornee = TCSGuiMouse.Target
 		else
 			selectionBox.Adornee = nil
 		end
 	end
-	ActivateHighlight = IYMouse.Move:Connect(HighlightPart)
+	ActivateHighlight = TCSGuiMouse.Move:Connect(HighlightPart)
 	local function SelectPart()
-		if IYMouse.Target ~= nil then
-			selected.Adornee = IYMouse.Target
-			Path.Text = getHierarchy(IYMouse.Target)
+		if TCSGuiMouse.Target ~= nil then
+			selected.Adornee = TCSGuiMouse.Target
+			Path.Text = getHierarchy(TCSGuiMouse.Target)
 		end
 	end
-	ClickSelect = IYMouse.Button1Down:Connect(SelectPart)
+	ClickSelect = TCSGuiMouse.Button1Down:Connect(SelectPart)
 end
 
 Part.MouseButton1Click:Connect(function()
@@ -4456,7 +4456,7 @@ function autoComplete(str,curText)
 end
 
 CMDs = {}
-CMDs[#CMDs + 1] = {NAME = 'discord / support / help', DESC = 'Invite to the Infinite Yield discord server.'}
+CMDs[#CMDs + 1] = {NAME = 'discord / support / help', DESC = 'Invite to the TCS Gui discord server.'}
 CMDs[#CMDs + 1] = {NAME = 'guiscale [number]', DESC = 'Changes the size of the gui. [number] accepts both decimals and whole numbers. Min is 0.4 and Max is 2'}
 CMDs[#CMDs + 1] = {NAME = 'console', DESC = 'Loads Roblox console'}
 CMDs[#CMDs + 1] = {NAME = 'oldconsole', DESC = 'Loads old Roblox console'}
@@ -4488,11 +4488,11 @@ CMDs[#CMDs + 1] = {NAME = 'hideguis', DESC = 'Hides any GUIs in PlayerGui'}
 CMDs[#CMDs + 1] = {NAME = 'unhideguis', DESC = 'Undoes hideguis'}
 CMDs[#CMDs + 1] = {NAME = 'guidelete', DESC = 'Enables backspace to delete GUI'}
 CMDs[#CMDs + 1] = {NAME = 'unguidelete / noguidelete', DESC = 'Disables guidelete'}
-CMDs[#CMDs + 1] = {NAME = 'hideiy', DESC = 'Hides the main IY GUI'}
-CMDs[#CMDs + 1] = {NAME = 'showiy / unhideiy', DESC = 'Shows IY again'}
-CMDs[#CMDs + 1] = {NAME = 'keepiy', DESC = 'Auto execute IY when you teleport through servers'}
-CMDs[#CMDs + 1] = {NAME = 'unkeepiy', DESC = 'Disable keepiy'}
-CMDs[#CMDs + 1] = {NAME = 'togglekeepiy', DESC = 'Toggles keepiy'}
+CMDs[#CMDs + 1] = {NAME = 'hideTCSGui', DESC = 'Hides the main TCSGui GUI'}
+CMDs[#CMDs + 1] = {NAME = 'showTCSGui / unhideTCSGui', DESC = 'Shows TCSGui again'}
+CMDs[#CMDs + 1] = {NAME = 'keepTCSGui', DESC = 'Auto execute TCSGui when you teleport through servers'}
+CMDs[#CMDs + 1] = {NAME = 'unkeepTCSGui', DESC = 'Disable keepTCSGui'}
+CMDs[#CMDs + 1] = {NAME = 'togglekeepTCSGui', DESC = 'Toggles keepTCSGui'}
 CMDs[#CMDs + 1] = {NAME = 'removeads / adblock', DESC = 'Automatically removes ad billboards'}
 CMDs[#CMDs + 1] = {NAME = 'savegame / saveplace', DESC = 'Uses saveinstance to save the game'}
 CMDs[#CMDs + 1] = {NAME = 'clearerror', DESC = 'Clears the annoying box and blur when a game kicks you'}
@@ -4914,7 +4914,7 @@ IndexContents("", true)
 
 function checkTT()
 	local t
-	local guisAtPosition = COREGUI:GetGuiObjectsAtPosition(IYMouse.X, IYMouse.Y)
+	local guisAtPosition = COREGUI:GetGuiObjectsAtPosition(TCSGuiMouse.X, TCSGuiMouse.Y)
 
 	for _, gui in pairs(guisAtPosition) do
 		if gui.Parent == CMDsF then
@@ -4923,16 +4923,16 @@ function checkTT()
 	end
 
 	if t ~= nil and t:GetAttribute("Title") ~= nil then
-		local x = IYMouse.X
-		local y = IYMouse.Y
+		local x = TCSGuiMouse.X
+		local y = TCSGuiMouse.Y
 		local xP
 		local yP
-		if IYMouse.X > 200 then
+		if TCSGuiMouse.X > 200 then
 			xP = x - 201
 		else
 			xP = x + 21
 		end
-		if IYMouse.Y > (IYMouse.ViewSizeY-96) then
+		if TCSGuiMouse.Y > (TCSGuiMouse.ViewSizeY-96) then
 			yP = y - 97
 		else
 			yP = y
@@ -5141,7 +5141,7 @@ function execCmd(cmdStr,speaker,store)
 				if infTimes then
 					while lastBreakTime < cmdStartTime do
 						local success,err = pcall(cmd.FUNC,args, speaker)
-						if not success and _G.IY_DEBUG then
+						if not success and _G.TCSGui_DEBUG then
 							warn("Command Error:", cmdName, err)
 						end
 						wait(cmdDelay)
@@ -5152,7 +5152,7 @@ function execCmd(cmdStr,speaker,store)
 						local success,err = pcall(function()
 							cmd.FUNC(args, speaker)
 						end)
-						if not success and _G.IY_DEBUG then
+						if not success and _G.TCSGui_DEBUG then
 							warn("Command Error:", cmdName, err)
 						end
 						if cmdDelay ~= 0 then wait(cmdDelay) end
@@ -5243,7 +5243,7 @@ local WorldToScreen = function(Object)
 end
 
 local MousePositionToVector2 = function()
-	return Vector2.new(IYMouse.X, IYMouse.Y)
+	return Vector2.new(TCSGuiMouse.X, TCSGuiMouse.Y)
 end
 
 local GetClosestPlayerFromCursor = function()
@@ -6245,7 +6245,7 @@ local function clicktpFunc()
 		local hipHeight = humanoid and humanoid.HipHeight > 0 and (humanoid.HipHeight + 1)
 		local rootPart = getRoot(character)
 		local rootPartPosition = rootPart.Position
-		local hitPosition = IYMouse.Hit.Position
+		local hitPosition = TCSGuiMouse.Hit.Position
 		local newCFrame = CFrame.new(
 			hitPosition, 
 			Vector3.new(rootPartPosition.X, hitPosition.Y, rootPartPosition.Z)
@@ -6256,7 +6256,7 @@ local function clicktpFunc()
 	end)
 end
 
-IYMouse.Button1Down:Connect(function()
+TCSGuiMouse.Button1Down:Connect(function()
 	for i,v in pairs(binds) do
 		if v.COMMAND == 'clicktp' then
 			local input = v.KEY
@@ -6270,11 +6270,11 @@ IYMouse.Button1Down:Connect(function()
 		elseif v.COMMAND == 'clickdel' then
 			local input = v.KEY
 			if input == 'RightClick' and UserInputService:IsMouseButtonPressed(Enum.UserInputType.MouseButton2) then
-				pcall(function() IYMouse.Target:Destroy() end)
+				pcall(function() TCSGuiMouse.Target:Destroy() end)
 			elseif input == 'LeftClick' and UserInputService:IsMouseButtonPressed(Enum.UserInputType.MouseButton1) then
-				pcall(function() IYMouse.Target:Destroy() end)
+				pcall(function() TCSGuiMouse.Target:Destroy() end)
 			elseif UserInputService:IsKeyDown(Enum.KeyCode[input:sub(14)]) then
-				pcall(function() IYMouse.Target:Destroy() end)
+				pcall(function() TCSGuiMouse.Target:Destroy() end)
 			end
 		end
 	end
@@ -6283,17 +6283,17 @@ end)
 PluginsGUI = PluginEditor.background
 
 function addPlugin(name)
-	if name:lower() == 'plugin file name' or name:lower() == 'iy_fe.iy' or name == 'iy_fe' then
+	if name:lower() == 'plugin file name' or name:lower() == 'TCSGui_fe.TCSGui' or name == 'TCSGui_fe' then
 		notify('Plugin Error','Please enter a valid plugin')
 	else
 		local file
 		local fileName
-		if name:sub(-3) == '.iy' then
+		if name:sub(-3) == '.TCSGui' then
 			pcall(function() file = readfile(name) end)
 			fileName = name
 		else
-			pcall(function() file = readfile(name..'.iy') end)
-			fileName = name..'.iy'
+			pcall(function() file = readfile(name..'.TCSGui') end)
+			fileName = name..'.TCSGui'
 		end
 		if file then
 			if not FindInTable(PluginsTable, fileName) then
@@ -6311,8 +6311,8 @@ function addPlugin(name)
 end
 
 function deletePlugin(name)
-	local pName = name..'.iy'
-	if name:sub(-3) == '.iy' then
+	local pName = name..'.TCSGui'
+	if name:sub(-3) == '.TCSGui' then
 		pName = name
 	end
 	for i = #cmds,1,-1 do
@@ -6480,7 +6480,7 @@ local TeleportCheck = false
 Players.LocalPlayer.OnTeleport:Connect(function(State)
 	if KeepInfYield and (not TeleportCheck) and queueteleport then
 		TeleportCheck = true
-		queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()")
+		queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeTCSGui/infiniteyield/master/source'))()")
 	end
 end)
 
@@ -6498,6 +6498,69 @@ addcmd('addalias',{},function(args, speaker)
 			break
 		end
 	end
+end)
+
+addcmd('tcsproud', {}, function(args, speaker)
+    local lp = Players.LocalPlayer
+    local char = lp.Character
+    if not char or not char:FindFirstChild("HumanoidRootPart") then return end
+
+    -- 1. Initial Announcements
+    local function say(msg)
+        if isLegacyChat then
+            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(msg, "All")
+        else
+            TextChatService.TextChannels.RBXGeneral:SendAsync(msg)
+        end
+    end
+
+    local shout = lp.Name .. " IS USING THE TCS IY GUI! TEAM CORRUPTED STUDIOS ON TOP!"
+    say(shout)
+    task.wait(0.1)
+    say(shout)
+
+    -- 2. Activate Fling Logic
+    -- This uses the standard IY fling method by spinning the character rapidly
+    local bam = Instance.new("BodyAngularVelocity")
+    bam.Name = "TCSFling"
+    bam.Parent = char.HumanoidRootPart
+    bam.MaxTorque = Vector3.new(0, math.huge, 0)
+    bam.P = 1250
+    bam.AngularVelocity = Vector3.new(0, 9999, 0)
+
+    for _, v in pairs(char:GetChildren()) do
+        if v:IsA("BasePart") then
+            v.CanCollide = false
+            v.CustomPhysicalProperties = PhysicalProperties.new(100, 0.3, 0.5)
+        end
+    end
+
+    -- 3. Teleport to everyone after 2 seconds
+    task.wait(2)
+    for _, plr in pairs(Players:GetPlayers()) do
+        if plr ~= lp and plr.Character and plr.Character:FindFirstChild("HumanoidRootPart") then
+            char.HumanoidRootPart.CFrame = plr.Character.HumanoidRootPart.CFrame
+            task.wait(0.3) -- Small delay so the fling actually hits them
+        end
+    end
+
+    -- 4. Disco Lighting
+    local disco = true
+    task.spawn(function()
+        while disco do
+            Lighting.Ambient = Color3.new(math.random(), math.random(), math.random())
+            Lighting.OutdoorAmbient = Color3.new(math.random(), math.random(), math.random())
+            task.wait(0.1)
+        end
+    end)
+
+    -- 5. Final Message & Exit
+    task.wait(1) -- Short pause after teleporting
+    say("Team Corrupted Studios is the greatest team of all time. Our destruction is done. Goodbye!")
+    
+    task.wait(5)
+    disco = false
+    lp:Kick("TCS ON TOP! Session Ended.")
 end)
 
 addcmd('removealias',{},function(args, speaker)
@@ -6549,27 +6612,27 @@ addcmd('discord', {'support', 'help'}, function(args, speaker)
 	end
 end)
 
-addcmd('keepiy', {}, function(args, speaker)
+addcmd('keepTCSGui', {}, function(args, speaker)
 	if queueteleport then
 		KeepInfYield = true
-		notify('KeepIY','Infinite Yield will now run after you teleport')
+		notify('KeepTCSGui','TCS Gui will now run after you teleport')
 		updatesaves()
 	else
 		notify('Incompatible Exploit','Your exploit does not support this command (missing queue_on_teleport)')
 	end
 end)
 
-addcmd('unkeepiy', {}, function(args, speaker)
+addcmd('unkeepTCSGui', {}, function(args, speaker)
 	if queueteleport then
 		KeepInfYield = false
-		notify('KeepIY','Infinite Yield will no longer run after you teleport')
+		notify('KeepTCSGui','TCS Gui will no longer run after you teleport')
 		updatesaves()
 	else
 		notify('Incompatible Exploit','Your exploit does not support this command (missing queue_on_teleport)')
 	end
 end)
 
-addcmd('togglekeepiy', {}, function(args, speaker)
+addcmd('togglekeepTCSGui', {}, function(args, speaker)
 	if queueteleport then
 		KeepInfYield = not KeepInfYield
 		updatesaves()
@@ -7001,7 +7064,7 @@ end)
 
 FLYING = false
 QEfly = true
-iyflyspeed = 1
+TCSGuiflyspeed = 1
 vehicleflyspeed = 1
 function sFLY(vfly)
 	local plr = Players.LocalPlayer
@@ -7068,17 +7131,17 @@ function sFLY(vfly)
 	flyKeyDown = UserInputService.InputBegan:Connect(function(input, processed)
 		if processed then return end
 		if input.KeyCode == Enum.KeyCode.W then
-			CONTROL.F = (vfly and vehicleflyspeed or iyflyspeed)
+			CONTROL.F = (vfly and vehicleflyspeed or TCSGuiflyspeed)
 		elseif input.KeyCode == Enum.KeyCode.S then
-			CONTROL.B = - (vfly and vehicleflyspeed or iyflyspeed)
+			CONTROL.B = - (vfly and vehicleflyspeed or TCSGuiflyspeed)
 		elseif input.KeyCode == Enum.KeyCode.A then
-			CONTROL.L = - (vfly and vehicleflyspeed or iyflyspeed)
+			CONTROL.L = - (vfly and vehicleflyspeed or TCSGuiflyspeed)
 		elseif input.KeyCode == Enum.KeyCode.D then
-			CONTROL.R = (vfly and vehicleflyspeed or iyflyspeed)
+			CONTROL.R = (vfly and vehicleflyspeed or TCSGuiflyspeed)
 		elseif input.KeyCode == Enum.KeyCode.E and QEfly then
-			CONTROL.Q = (vfly and vehicleflyspeed or iyflyspeed)*2
+			CONTROL.Q = (vfly and vehicleflyspeed or TCSGuiflyspeed)*2
 		elseif input.KeyCode == Enum.KeyCode.Q and QEfly then
-			CONTROL.E = -(vfly and vehicleflyspeed or iyflyspeed)*2
+			CONTROL.E = -(vfly and vehicleflyspeed or TCSGuiflyspeed)*2
 		end
 		pcall(function() camera.CameraType = Enum.CameraType.Track end)
 	end)
@@ -7183,16 +7246,16 @@ local mobilefly = function(speaker, vfly)
 
 			local direction = controlModule:GetMoveVector()
 			if direction.X > 0 then
-				VelocityHandler.Velocity = VelocityHandler.Velocity + camera.CFrame.RightVector * (direction.X * ((vfly and vehicleflyspeed or iyflyspeed) * 50))
+				VelocityHandler.Velocity = VelocityHandler.Velocity + camera.CFrame.RightVector * (direction.X * ((vfly and vehicleflyspeed or TCSGuiflyspeed) * 50))
 			end
 			if direction.X < 0 then
-				VelocityHandler.Velocity = VelocityHandler.Velocity + camera.CFrame.RightVector * (direction.X * ((vfly and vehicleflyspeed or iyflyspeed) * 50))
+				VelocityHandler.Velocity = VelocityHandler.Velocity + camera.CFrame.RightVector * (direction.X * ((vfly and vehicleflyspeed or TCSGuiflyspeed) * 50))
 			end
 			if direction.Z > 0 then
-				VelocityHandler.Velocity = VelocityHandler.Velocity - camera.CFrame.LookVector * (direction.Z * ((vfly and vehicleflyspeed or iyflyspeed) * 50))
+				VelocityHandler.Velocity = VelocityHandler.Velocity - camera.CFrame.LookVector * (direction.Z * ((vfly and vehicleflyspeed or TCSGuiflyspeed) * 50))
 			end
 			if direction.Z < 0 then
-				VelocityHandler.Velocity = VelocityHandler.Velocity - camera.CFrame.LookVector * (direction.Z * ((vfly and vehicleflyspeed or iyflyspeed) * 50))
+				VelocityHandler.Velocity = VelocityHandler.Velocity - camera.CFrame.LookVector * (direction.Z * ((vfly and vehicleflyspeed or TCSGuiflyspeed) * 50))
 			end
 		end
 	end)
@@ -7207,14 +7270,14 @@ addcmd('fly',{},function(args, speaker)
 		mobilefly(speaker)
 	end
 	if args[1] and isNumber(args[1]) then
-		iyflyspeed = args[1]
+		TCSGuiflyspeed = args[1]
 	end
 end)
 
 addcmd('flyspeed',{'flysp'},function(args, speaker)
 	local speed = args[1] or 1
 	if isNumber(speed) then
-		iyflyspeed = speed
+		TCSGuiflyspeed = speed
 	end
 end)
 
@@ -7323,22 +7386,22 @@ addcmd('float', {'platform'},function(args, speaker)
 			local FloatValue = -3.1
 			Float.CFrame = getRoot(pchar).CFrame * CFrame.new(0,FloatValue,0)
 			notify('Float','Float Enabled (Q = down & E = up)')
-			qUp = IYMouse.KeyUp:Connect(function(KEY)
+			qUp = TCSGuiMouse.KeyUp:Connect(function(KEY)
 				if KEY == 'q' then
 					FloatValue = FloatValue + 0.5
 				end
 			end)
-			eUp = IYMouse.KeyUp:Connect(function(KEY)
+			eUp = TCSGuiMouse.KeyUp:Connect(function(KEY)
 				if KEY == 'e' then
 					FloatValue = FloatValue - 1.5
 				end
 			end)
-			qDown = IYMouse.KeyDown:Connect(function(KEY)
+			qDown = TCSGuiMouse.KeyDown:Connect(function(KEY)
 				if KEY == 'q' then
 					FloatValue = FloatValue - 0.5
 				end
 			end)
-			eDown = IYMouse.KeyDown:Connect(function(KEY)
+			eDown = TCSGuiMouse.KeyDown:Connect(function(KEY)
 				if KEY == 'e' then
 					FloatValue = FloatValue + 1.5
 				end
@@ -7745,7 +7808,7 @@ end)
 
 function deleteGuisAtPos()
 	pcall(function()
-		local guisAtPosition = PlayerGui:GetGuiObjectsAtPosition(IYMouse.X, IYMouse.Y)
+		local guisAtPosition = PlayerGui:GetGuiObjectsAtPosition(TCSGuiMouse.X, TCSGuiMouse.Y)
 		for _, gui in pairs(guisAtPosition) do
 			if gui.Visible == true then
 				gui:Destroy()
@@ -7772,7 +7835,7 @@ addcmd('unguidelete',{'noguidelete'},function(args, speaker)
 end)
 
 local wasStayOpen = StayOpen
-addcmd('hideiy',{},function(args, speaker)
+addcmd('hideTCSGui',{},function(args, speaker)
 	isHidden = true
 	wasStayOpen = StayOpen
 	if StayOpen == true then
@@ -7781,10 +7844,10 @@ addcmd('hideiy',{},function(args, speaker)
 	end
 	minimizeNum = 0
 	minimizeHolder()
-	if not (args[1] and tostring(args[1]) == 'nonotify') then notify('IY Hidden','You can press the prefix key to access the command bar') end
+	if not (args[1] and tostring(args[1]) == 'nonotify') then notify('TCSGui Hidden','You can press the prefix key to access the command bar') end
 end)
 
-addcmd('showiy',{'unhideiy'},function(args, speaker)
+addcmd('showTCSGui',{'unhideTCSGui'},function(args, speaker)
 	isHidden = false
 	minimizeNum = -20
 	if wasStayOpen then
@@ -10168,7 +10231,7 @@ end)
 
 addcmd("mouseteleport", {"mousetp"}, function(args, speaker)
     local root = getRoot(speaker.Character)
-    local pos = IYMouse.Hit
+    local pos = TCSGuiMouse.Hit
     if root and pos then
         root.CFrame = CFrame.new(pos.X, pos.Y + 3, pos.Z, select(4, root.CFrame:components()))
         breakVelocity()
@@ -10182,7 +10245,7 @@ addcmd("tptool", {"teleporttool"}, function(args, speaker)
     TpTool.Parent = speaker:FindFirstChildOfClass("Backpack")
     TpTool.Activated:Connect(function()
         local root = getRoot(speaker.Character)
-        local pos = IYMouse.Hit
+        local pos = TCSGuiMouse.Hit
         if not root or not pos then return end
         root.CFrame = CFrame.new(pos.X, pos.Y + 3, pos.Z, select(4, root.CFrame:components()))
         breakVelocity()
@@ -12239,7 +12302,7 @@ addcmd('hovername',{},function(args, speaker)
 	nbSelection.Color3 = Color3.new(1, 1, 1)
 	local function updateNameBox()
 		local t
-		local target = IYMouse.Target
+		local target = TCSGuiMouse.Target
 
 		if target then
 			local humanoid = target.Parent:FindFirstChildOfClass("Humanoid") or target.Parent.Parent:FindFirstChildOfClass("Humanoid")
@@ -12249,11 +12312,11 @@ addcmd('hovername',{},function(args, speaker)
 		end
 
 		if t ~= nil then
-			local x = IYMouse.X
-			local y = IYMouse.Y
+			local x = TCSGuiMouse.X
+			local y = TCSGuiMouse.Y
 			local xP
 			local yP
-			if IYMouse.X > 200 then
+			if TCSGuiMouse.X > 200 then
 				xP = x - 205
 				nameBox.TextXAlignment = Enum.TextXAlignment.Right
 			else
@@ -12271,7 +12334,7 @@ addcmd('hovername',{},function(args, speaker)
 			nbSelection.Adornee = nil
 		end
 	end
-	nbUpdateFunc = IYMouse.Move:Connect(updateNameBox)
+	nbUpdateFunc = TCSGuiMouse.Move:Connect(updateNameBox)
 end)
 
 addcmd('unhovername',{'nohovername'},function(args, speaker)
@@ -13014,10 +13077,10 @@ addcmd("addallplugins", {"loadallplugins"}, function(args, speaker)
 	end
 
 	for _, filePath in ipairs(listfiles("")) do
-		local fileName = filePath:match("([^/\\]+%.iy)$")
+		local fileName = filePath:match("([^/\\]+%.TCSGui)$")
 
 		if fileName and
-			fileName:lower() ~= "iy_fe.iy" and
+			fileName:lower() ~= "TCSGui_fe.TCSGui" and
 			not isfolder(fileName) and
 			not table.find(PluginsTable, fileName)
 		then
@@ -13032,7 +13095,7 @@ end)
 
 addcmd("debug", {}, function(args, speaker)
     local opt = parseBoolean(args[1], true)
-    _G.IY_DEBUG = opt
+    _G.TCSGui_DEBUG = opt
     notify("debug", tostring(opt), 1)
 end)
 
@@ -13046,7 +13109,7 @@ if IsOnMobile then
 	QuickCapture.Position = UDim2.new(0.489, 0, 0, 0)
 	QuickCapture.Size = UDim2.new(0, 32, 0, 33)
 	QuickCapture.Font = Enum.Font.SourceSansBold
-	QuickCapture.Text = "IY"
+	QuickCapture.Text = "TCSGui"
 	QuickCapture.TextColor3 = Color3.fromRGB(255, 255, 255)
 	QuickCapture.TextSize = 20
 	QuickCapture.TextWrapped = true
@@ -13213,7 +13276,7 @@ if aliases and #aliases > 0 then
 	refreshaliases()
 end
 
-IYMouse.Move:Connect(checkTT)
+TCSGuiMouse.Move:Connect(checkTT)
 
 CaptureService.CaptureBegan:Connect(function()
 	PARENT.Enabled = false
@@ -13227,7 +13290,7 @@ end)
 
 task.spawn(function()
 	local success, latestVersionInfo = pcall(function() 
-		local versionJson = game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/version")
+		local versionJson = game:HttpGet("https://raw.githubusercontent.com/EdgeTCSGui/infiniteyield/master/version")
 		return HttpService:JSONDecode(versionJson)
 	end)
 
