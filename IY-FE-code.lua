@@ -4460,7 +4460,65 @@ CMDs[#CMDs + 1] = {NAME = 'discord / support / help', DESC = 'Invite to the TCS 
 CMDs[#CMDs + 1] = {NAME = 'guiscale [number]', DESC = 'Changes the size of the gui. [number] accepts both decimals and whole numbers. Min is 0.4 and Max is 2'}
 CMDs[#CMDs + 1] = {NAME = 'console', DESC = 'Loads Roblox console'}
 CMDs[#CMDs + 1] = {NAME = 'oldconsole', DESC = 'Loads old Roblox console'}
-CMDs[#CMDs + 1] = {NAME = 'explorer / dex', DESC = 'Opens DEX by Moon'}
+-- [[ UPDATED DEX COMMANDS & NEW UNLOAD COMMAND ]]
+CMDs[#CMDs + 1] = {
+    NAME = 'explorer / dex / dex++', 
+    DESC = 'Opens Dex++ (Newest Release)', 
+    FUNC = function()
+        pcall(function()
+            game:GetService("StarterGui"):SetCore("SendNotification", {
+                Title = "Dex++",
+                Text = "Loading Dex++ (Newest Release)...",
+                Duration = 3
+            })
+        end)
+        loadstring(game:HttpGet("https://github.com/AZYsGithub/DexPlusPlus/releases/latest/download/out.lua"))()
+    end
+}
+
+CMDs[#CMDs + 1] = {
+    NAME = 'dexplugin / secretpanel / ssp', 
+    DESC = 'Loads the Dex++ Secret Service Panel plugin example', 
+    FUNC = function()
+        pcall(function()
+            game:GetService("StarterGui"):SetCore("SendNotification", {
+                Title = "Dex++ Plugin",
+                Text = "Loading Secret Service Panel plugin...",
+                Duration = 3
+            })
+        end)
+        loadstring(game:HttpGet("https://github.com/AZYsGithub/DexPlusPlus/releases/download/stable-3.0/PLUGINEXAMPLE_SecretServicePanel.lua"))()
+    end
+}
+
+CMDs[#CMDs + 1] = {
+    NAME = 'unload / uninject / exitiy', 
+    DESC = 'Unloads Infinite Yield completely and destroys the UI', 
+    FUNC = function()
+        pcall(function()
+            -- Clear out execution flags so you can re-run it later
+            _G.TCS_IY_LOADED = nil
+            _G.IY_LOADED = nil
+            
+            -- Locate your specific GUI holder and destroy it
+            local uiTarget = game:GetService("CoreGui"):FindFirstChild("IY_Holder") 
+                or (game:GetService("CoreGui"):FindFirstChild("RobloxGui") and game:GetService("CoreGui").RobloxGui:FindFirstChild("IY_Holder"))
+                or game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"):FindFirstChild("IY_Holder")
+                
+            if uiTarget then 
+                uiTarget:Destroy() 
+            end
+            
+            game:GetService("StarterGui"):SetCore("SendNotification", {
+                Title = "TCS IY",
+                Text = "Infinite Yield has been completely unloaded.",
+                Duration = 3
+            })
+        end)
+    end
+}
+
+CMDs[#CMDs + 1] = {NAME = 'olddex / odex', DESC = 'Opens Old DEX by Moon'}
 CMDs[#CMDs + 1] = {NAME = 'olddex / odex', DESC = 'Opens Old DEX by Moon'}
 CMDs[#CMDs + 1] = {NAME = 'remotespy / rspy', DESC = 'Opens Simple Spy V3'}
 CMDs[#CMDs + 1] = {NAME = 'executor', DESC = 'Opens an internal executor gui by dnezero'}
