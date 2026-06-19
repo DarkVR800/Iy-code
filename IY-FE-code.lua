@@ -6593,6 +6593,29 @@ addcmd('tcsproud', {}, function(args, speaker)
     lp:Kick("\n[TCS IY FE]\n\nSUCCESSFULLY CORRUPTED THE SERVER.\nTEAM CORRUPTED STUDIOS ON TOP!")
 end)
 
+addcmd('unload', {'exittcsfe', 'exittcs'}, function(args, speaker)
+    pcall(function()
+        -- 1. Clear environment flags so you can re-run the script later
+        _G.TCS_IY_LOADED = nil
+        _G.IY_LOADED = nil
+        
+        -- 2. Find and destroy the UI holder frame/gui
+        if Holder and Holder.Parent then
+            Holder:Destroy()
+        elseif PARENT then
+            local foundHolder = PARENT:FindFirstChild("IY_Holder")
+            if foundHolder then foundHolder:Destroy() end
+        end
+        
+        -- 3. Send a standard Roblox notification confirming it's gone
+        game:GetService("StarterGui"):SetCore("SendNotification", {
+            Title = "TCS IY",
+            Text = "Team Corrupted Studisos FE has been completely unloaded.",
+            Duration = 3
+        })
+    end)
+end, "Unloads Infinite Yield completely and destroys the UI")
+
 addcmd('removealias',{},function(args, speaker)
 	if #args < 1 then return end
 	local alias = string.lower(args[1])
@@ -10528,10 +10551,15 @@ addcmd('oldconsole',{},function(args, speaker)
 	notify('Console','Press F9 to open the console')
 end)
 
-addcmd("explorer", {"dex"}, function(args, speaker)
-	notify("Loading", "Hold on a sec")
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/infyiff/backup/main/dex.lua"))()
-end)
+addcmd('dex', {'explorer', 'dex++'}, function(args, speaker)
+    executecmd("notify Dex++ Loading Dex++ (Newest Release)...")
+    loadstring(game:HttpGet("https://github.com/AZYsGithub/DexPlusPlus/releases/latest/download/out.lua"))()
+end, "Loads the newest version of Dex++")
+
+addcmd('dexplugin', {'secretpanel', 'ssp'}, function(args, speaker)
+    executecmd("notify Dex++ Plugin Loading Secret Service Panel plugin...")
+    loadstring(game:HttpGet("https://github.com/AZYsGithub/DexPlusPlus/releases/download/stable-3.0/PLUGINEXAMPLE_SecretServicePanel.lua"))()
+end, "Loads the Dex++ Secret Service Panel plugin example")
 
 addcmd('olddex', {'odex'}, function(args, speaker)
 	notify('Loading old explorer', 'Hold on a sec')
@@ -13430,4 +13458,15 @@ task.spawn(function()
     Credits:Destroy()
     IntroBackground:Destroy()
     minimizeHolder()
+end)
+pcall(function()
+    Players.LocalPlayer.OnTeleport:Connect(function(State)
+        if State == Enum.TeleportState.Started then
+            local queue_teleport = syn and syn.queue_on_teleport or queue_on_teleport or fluxus and fluxus.queue_on_teleport
+            if queue_teleport then
+                -- Keeps your custom fork persistent across games
+                queue_teleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/DarkVR800/Iy-code/main/IY-FE-code.lua'))()")
+            end
+        end
+    end)
 end)
